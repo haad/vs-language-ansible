@@ -4,6 +4,7 @@
 <dict>
 	<key>fileTypes</key>
 	<array>
+		<string>yml</string>
 	</array>
 	<key>name</key>
 	<string>Ansible</string>
@@ -44,7 +45,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>\- (name\:|include\:) (.*)|(^(- |\s*)\w+\:)</string>
+			<string>\- (name\:|include\:) (.*)|(^(- |\s*)\w+\ *:)</string>
 			<key>name</key>
 			<string>keyword.other.ansible</string>
 		</dict>
@@ -67,7 +68,7 @@
 			<key>contentName</key>
 			<string>string.other.ansible</string>
 			<key>end</key>
-			<string>\"?\s</string>
+			<string>(\"?[,\"=\n])</string>
 			<key>name</key>
 			<string>variable.complex.ansible</string>
 			<key>patterns</key>
@@ -94,7 +95,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>^(\[[0-9a-zA-Z_-]+(((\:)children)*)\])</string>
+			<string>^(\[[0-9a-zA-Z_,=-]+(((\:)children)*)\])</string>
 			<key>name</key>
 			<string>string.quoted.double.ansible</string>
 		</dict>

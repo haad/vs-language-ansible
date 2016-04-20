@@ -3,13 +3,22 @@
     "displayName": "language-Ansible",
     "description": "Ansible syntax highlighting support",
     "version": "0.0.1",
-    "publisher": "haaaad",
+    "publisher": "haad",
     "engines": {
         "vscode": "^1.0.0"
     },
     "categories": [
         "Languages"
     ],
+    "license": "MIT",
+	"icon": "images/ansible.png",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/haad/vs-language-ansible.git"
+	},
+	"bugs": {
+		"url": "https://github.com/haad/vs-language-ansible/issues"
+	},
     "contributes": {
         "languages": [{
             "id": "ansible",
