@@ -3,7 +3,7 @@
     "displayName": "language-Ansible",
     "description": "Ansible syntax highlighting support",
     "version": "0.0.1",
-    "publisher": "haad",
+    "publisher": "haaaad",
     "engines": {
         "vscode": "^1.0.0"
     },
