@@ -1,13 +1,5 @@
-# README
-## This is the README for your extension "ansible"
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
+# Ansible Syntax Highligting Extension
 
-* Split the editor (`Cmd+\` on OSX or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on OSX or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (OSX) to see a list of Markdown snippets
+This extension is trying to make syntax highliting for Ansible better on VScode. 
+It's based on original Ansible Sublime-text package with my own fixes.
 
-### For more information
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
