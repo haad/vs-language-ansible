@@ -29,7 +29,7 @@
   hosts: all
   become: yes
   roles:
-    - { role: common, tags: "common", test_var: 123, another_war: 31123, when: True }
+    - { role: common, tags: "common", test_var: "{{ 123 }}", another_war: 31123, when: True }
 
 - name: My Play
   hosts: all
