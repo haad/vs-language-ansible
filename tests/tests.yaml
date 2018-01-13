@@ -29,7 +29,7 @@
   hosts: all
   become: yes
   roles:
-    - { role: common, tags: "common", test_var: "{{ 123 }}", another_war: 31123, when: True }
+    - { role: common, tags: "common", test_var: 123, another_war: 31123, when: True }
 
 - name: My Play
   hosts: all
@@ -50,7 +50,7 @@
       tags:
         - "common"
         - "test"
-      test_var: http://123
+      test_var: "http://toto.com"
       another_war: 31123
       when: True
   tasks:
@@ -90,7 +90,8 @@ openstack_objectstorage_storage_dir: /srv/node/
 openstack_objectstorage_swift_hash_path_suffix: suffix
 
 vpc_sub_list: [
-  { "cidr": "{{ vpc_sub_public[0].cidr }}", "az": "{{ vpc_sub_public[0].az }}",
+  { cidr: "{{ vpc_sub_public[0].cidr }}", az: "{{ vpc_sub_public[0].az }}",
+    qtretre: "{{ vpc_sub_public[0].az }}",
     "resource_tags": '{ "Environment": "{{ vpc_env }}", "Stack":"{{ stack_name }}", "Tier": "Public", "Name": "{{ vpc_type }}-{{ vpc_env }} public" }' },
   { "cidr": "{{ vpc_sub_public[1].cidr }}", "az": "{{ vpc_sub_public[1].az }}",
     "resource_tags": '{ "Environment": "{{ vpc_env }}", "Stack":"{{ stack_name }}", "Tier": "Public", "Name": "{{ vpc_type }}-{{ vpc_env }} public2" }' },
@@ -103,3 +104,51 @@ vpc_sub_list: [
   { "cidr": "{{ vpc_sub_priv[2].cidr }}", "az": "{{ vpc_sub_priv[2].az }}",
     "resource_tags": '{ "Environment": "{{ vpc_env }}", "Stack":"{{ stack_name }}", "Tier": "Private", "Name": "{{ vpc_type }}-{{ vpc_env }} private3" }'}
 ]
+
+# Conditions supported
+- name: "Test"
+  become: yes
+  become_user: toto
+  register: result
+  when: toto in install_user
+  check_mode: ansible_check_mode
+  changed_when: no
+  failed_when: result | failed and not 'already exists' in result.stdout
+
+- name: "Test"
+  when: >-
+    not result | skipped
+    or result | failed
+  hosts: all
+  become: yes
+
+- name: Test
+  file: >
+    name=/etc/toto
+    state=directory
+    owner={{test_user}}
+
+- name: "Test"
+  when:
+    - toto is defined
+    - 'toto' is defined
+    - "'attention' is present"
+    - '"attention" is present'
+  hosts: all
+  become: yes
+
+# Handle most of the cases with block scalar
+# Workaround insert a blank line
+- name: Let's play
+  vars:
+    content: >-
+      This is a multiline example with some {{ 'jinja' }}
+
+      It support line breaking
+  debug: msg="{{ content }}"
+
+# Limitations of block scalar (indent=0)
+- name: >-
+    My Play {{ toto }}
+  hosts: all
+  become: yes

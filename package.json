@@ -34,6 +34,19 @@
                     "ansible"
                 ],
                 "configuration": "./ansible.configuration.json"
+            },
+            {
+                "id": "ansible-advanced",
+                "aliases": [
+                    "Ansible (advanced)",
+                    "ansible (advanced)",
+                    "Ansible",
+                    "ansible"
+                ],
+                "extensions": [
+                    "ansible-advanced"
+                ],
+                "configuration": "./ansible.configuration.json"
             }
         ],
         "grammars": [
@@ -41,6 +54,11 @@
                 "language": "ansible",
                 "scopeName": "source.ansible",
                 "path": "./syntaxes/ansible.tmLanguage"
+            },
+            {
+                "language": "ansible-advanced",
+                "scopeName": "source.ansible-advanced",
+                "path": "./syntaxes/ansible-advanced.tmLanguage"
             }
         ]
     }
